@@ -59,12 +59,11 @@ router.post('/:userName/favourites', async (req, res, next) => {
   const userName = req.params.userName;
   try{
     const movie = await movieModel.findByMovieDBId(newFavourite);
-  const user = await User.findByUserName(userName);
-  await user.favourites.push(movie._id);
-  await user.save(); 
-  res.status(201).json(user); 
-  
-} catch(err){
+    const user = await User.findByUserName(userName);
+    await user.favourites.push(movie._id);
+    await user.save(); 
+    res.status(201).json(user); 
+  }catch(err){
     next(err);
   }
 });
