@@ -9,5 +9,7 @@
         "sourceType": "module"
     },
     "rules": {
+        "semi": 1,
+        "no-console": "off"
     }
 }
