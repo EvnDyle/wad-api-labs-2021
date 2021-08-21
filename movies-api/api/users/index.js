@@ -46,7 +46,6 @@ router.post('/', async (req, res, next) => {
       }
   });
   
-
   router.get('/:userName/favourites', (req, res, next) => {
     const userName = req.params.userName;
     User.findByUserName(userName).populate('favourites').then(
@@ -55,15 +54,20 @@ router.post('/', async (req, res, next) => {
   });
 
 //Add a favourite. No Error Handling Yet. Can add duplicates too!
-router.post('/:userName/favourites', async (req, res, /*next*/) => {
-    const newFavourite = req.body.id;
-    const userName = req.params.userName;
+router.post('/:userName/favourites', async (req, res, next) => {
+  const newFavourite = req.body.id;
+  const userName = req.params.userName;
+  try{
     const movie = await movieModel.findByMovieDBId(newFavourite);
-    const user = await User.findByUserName(userName);
-    await user.favourites.push(movie._id);
-    await user.save(); 
-    res.status(201).json(user); 
-  });
+  const user = await User.findByUserName(userName);
+  await user.favourites.push(movie._id);
+  await user.save(); 
+  res.status(201).json(user); 
+  
+} catch(err){
+    next(err);
+  }
+});
 
 // Update a user
 router.put('/:id',  (req, res, next) => {
