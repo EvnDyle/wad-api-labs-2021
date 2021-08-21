@@ -30,20 +30,18 @@ if (process.env.SEED_DB) {
   loadUsers();
 }
 
-//configure body-parser
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
-
-app.use(express.static('public'));
-app.use('/api/movies', authenticate, moviesRouter);
-app.use('/api/users', usersRouter);
-app.use(errHandler);
 
 app.use(session({
   secret: 'ilikecake',
   resave: true,
   saveUninitialized: true
 }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+app.use(express.static('public'));
+app.use('/api/movies', authenticate, moviesRouter);
+app.use('/api/users', usersRouter);
+app.use(errHandler);
 
 
 app.listen(port, () => {

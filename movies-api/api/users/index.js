@@ -4,6 +4,11 @@ import User from './userModel';
 const router = express.Router(); // eslint-disable-line
 
 // Get all users
+router.get('/', (req, res, next) => {
+    User.find().then(users => res.status(200).json(users)).catch(next);
+});
+
+// authenticate a user
 router.post('/', (req, res, next) => {
     if (!req.body.username || !req.body.password) {
         res.status(401).send('authentication failed');
@@ -30,11 +35,6 @@ router.get('/:userName/favourites', (req, res, next) => {
     ).catch(next);
   });
 
-// register
-router.post('/', (req, res, next) => {
-    User.create(req.body).then(user => res.status(200).json({success:true,token:"FakeTokenForNow"})).catch(next);
-});
-
 router.post('/:userName/favourites', (req, res, next) => {
     const newFavourite = req.body;
     const query = {username: req.params.userName};
@@ -48,7 +48,7 @@ router.post('/:userName/favourites', (req, res, next) => {
         }
       ).catch(next);
     } else {
-        res.status(401).send("Unable to find user")
+        res.status(401).send("Unable to find user");
     }
   });
 
