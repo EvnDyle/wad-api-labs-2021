@@ -1,7 +1,7 @@
 import express from 'express';
 import {
   getMovieReviews, getGenres, getUpcoming, getPopular, getTopRated,
-} from 'src/api/tmdb-api';
+} from 'src/api/movie-api';
 import movieModel from './movieModel';
 
 const router = express.Router();

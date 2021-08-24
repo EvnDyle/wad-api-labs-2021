@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Redirect } from "react-router-dom";
-import { AuthContext } from 'C:/Users/Evan/Desktop/Web App/Repeat Labwork/wad-api-labs-2021/reactApp/src/contexts/authContext.js';
+import { AuthContext } from "../contexts/authContext.js";
 
 const SignUpPage = props => {
   const context = useContext(AuthContext)

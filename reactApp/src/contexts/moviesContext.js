@@ -1,5 +1,5 @@
 import React, { useEffect, useState, createContext, useReducer } from "react";
-import { getMovies, getUpcoming, getTopRated} from "../api/movie-api.js";
+import { getMovies, getUpcoming, getTopRated } from '../api/movie-api.js';
 
 export const MoviesContext = createContext(null);
 

@@ -18,24 +18,26 @@ export const signup = (username, password) => {
     }).then(res => res.json())
 };
 
-export const getMovie = ()=> {
-    return fetch(
-        "/api/movies/${id}",{
-          headers: {
-            'Authorization': window.localStorage.getItem('token')
-         }
-       }
-       ).then(res => res.json());
-     };
 
-export const getMovies = () => {
-    return fetch(
-       '/api/movies',{headers: {
-         'Authorization': window.localStorage.getItem('token')
-      }
+export const getMovie = id => {
+  return fetch(
+    '/api/movies/'+id,{headers:{
+      'Authorization':window.localStorage.getItem('token')
     }
-    ).then(res => res.json());
-  };
+  }
+  ).then(res => res.json());
+};
+
+
+export const getMovies = id => {
+  return fetch(
+    '/api/movies',{headers:{
+      'Authorization':window.localStorage.getItem('token')
+    }
+  }
+  ).then(res => res.json());
+};
+  
   
   export const getGenres = () => {
     return fetch(
