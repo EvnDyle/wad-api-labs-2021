@@ -5,55 +5,45 @@ Practical labs and second assignment for the WAD2 module, BSc. Applied/Software 
 
 # Assignment 2 - Web API.
 
-### Steven Guiry - Computer Forensics & Security (20053842)
+### Evan Doyle - Computer Forensics & Security (20085432)
 
 ## Features.
- 
- ### Unregistered User
- + Login/Sign status must be activated in order to view movie views.
- + Login with username/password if registered.
- + Register if yet to set up account.
-
- ### Registered User
- + Three movie viewing pages, default/home page, upcoming movies page and top rated movies page.
- + Can add movies from home page and top rated to favourites page.
- + Can add movies from upcoming page to watchlist.
- + Select a movie to view details such as information about movie, the cast, reviews and the trailer.
- + Can write a review on movies in your watchlist/favourites page.
- + Can search the lists by title or filter to certain genres.
- + Logging added which lists any server request to the console.
+ There are 4 movie viewing pages, home page, upcoming movies, top rated movies, and popular movies.
+ An authenticated user can add movies from home page and top rated to their favourites.
+ They can also add movies from upcoming page to their watchlist.
+ Users can select movies to view details about the movie.
+ Users can write reviews on movies.
+ Users can filter each page by title or genre.
 
 ## Installation Requirements
 
-Clone this repository using the following link:
+To install this project, follow the steps seen below:
 
-```bat
-git clone https://github.com/StevenGuiry/wad-asgn2.git
+```
+git clone https://github.com/EvnDyle/wad-api-labs-2021.git
 ```
 
-Install the Node Package Manager:
-
-```bat
+```
 npm install
 ```
 
-Start the server:
-
-```bat
+```
 npm start
 ```
+
+A note:
+The solution uploaded from the moviesApi lab containing the mongoDB must be running for this app to function. 
 
 ## API Configuration
 Create an .env file with the following along with your TMDB API key. 
 
-```bat
 NODE_ENV=development
 PORT=8080
-HOST=
-mongoDB=YourMongoURL
-seedDb=true
-secret=YourJWTSecret
-```
+HOST=localhost
+TMDB_KEY={api_key}
+mongoDB=mongodb://localhost:27017/movies_db
+SEED_DB=true
+SECRET={secret}
 
 
 ## API Design
@@ -75,3 +65,4 @@ Here si an overview of the design:
 
 ## Security and Authentication
 The movie views are not visible to an unauthenticated user using private routes. There is a provided sign-up page to become authenticated. 
+
