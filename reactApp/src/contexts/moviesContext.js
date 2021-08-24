@@ -40,6 +40,7 @@ const reducer = (state, action) => {
         ),
         upcoming: [...state.upcoming],
         topRated: [...state.topRated],
+        popular: [...state.popular]
       };
     default:
       return state;

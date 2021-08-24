@@ -29,7 +29,7 @@ export const getMovie = id => {
 };
 
 
-export const getMovies = id => {
+export const getMovies = () => {
   return fetch(
     '/api/movies',{headers:{
       'Authorization':window.localStorage.getItem('token')
