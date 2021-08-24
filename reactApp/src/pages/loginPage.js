@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Redirect } from "react-router-dom";
-import { AuthContext } from '../contexts/authContext';
+import { AuthContext } from '../contexts/authContext.js';
 import { Link } from "react-router-dom";
 
 const LoginPage = props => {

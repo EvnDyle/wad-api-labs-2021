@@ -20,7 +20,8 @@ export const signup = (username, password) => {
 
 export const getMovie = ()=> {
     return fetch(
-        '/api/movies/${id}',{headers: {
+        "/api/movies/${id}",{
+          headers: {
             'Authorization': window.localStorage.getItem('token')
          }
        }
@@ -78,18 +79,6 @@ export const getPopular = () => {
          'Authorization': window.localStorage.getItem('token')
       }
     }
-    ).then(res => res.json());
-  };
-
-  export const addFavourite = (username) => {
-    return fetch(
-       '/api/users/${username}/favourites',{
-           headers: {
-                'Content-type': 'application/json'
-                    },
-            method: 'post',
-            body: JSON.stringify({ id: id })
-      }
     ).then(res => res.json());
   };
 

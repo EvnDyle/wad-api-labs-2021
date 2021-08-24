@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext } from "react";
-import { getGenres } from "../api/tmdb-api";
+import { getGenres } from "C:/Users/Evan/Desktop/Web App/Repeat Labwork/wad-api-labs-2021/reactApp/src/api/movie-api.js";
 
 export const GenresContext = createContext(null)
 

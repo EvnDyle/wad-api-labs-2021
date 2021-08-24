@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContext} from 'react';
-import { MoviesContext } from '../contexts/moviesContext - OLD';
+import { MoviesContext } from '../contexts/moviesContext';
 
 export const PublicPage = () => {
     return <h2>Public page</h2>

@@ -1,7 +1,7 @@
 import React, { useState, createContext } from "react";
 import { login, signup } from "../api/movie-api";
 
-export const AuthContext = createContext(null);
+export const AuthContext = createContext({isAuthenticated: false});
 
 const AuthContextProvider = (props) => {
   const existingToken = localStorage.getItem("token");
@@ -27,7 +27,7 @@ const AuthContextProvider = (props) => {
   const register = async (username, password) => {
     const result = await signup(username, password);
     console.log(result.code);
-    return (result.code == 201) ? true : false;
+    return (result.code === 201) ? true : false;
   };
 
   const signout = () => {
@@ -37,11 +37,12 @@ const AuthContextProvider = (props) => {
   return (
     <AuthContext.Provider
       value={{
+        authToken,
         isAuthenticated,
         authenticate,
         register,
         signout,
-        userName
+        userName,
       }}
     >
       {props.children}
