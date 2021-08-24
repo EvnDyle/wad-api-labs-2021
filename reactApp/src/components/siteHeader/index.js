@@ -9,7 +9,7 @@ const SiteHeader = () => {
     <nav className="navbar  navbar-light fixed-top  bg-dark ">
       <nav className="navbar-brand text-white">
         <Link className=" text-white" to="/">
-          TMDB Client
+          WAD ASGN 2
         </Link>
       </nav>
       <FontAwesomeIcon

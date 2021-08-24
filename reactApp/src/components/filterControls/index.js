@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "./filterControls.css";
-import { GenresContext } from '../../contexts/genresContext' 
+import { GenresContext } from '../../contexts/genresContext.js' 
 
 const FilterControls = props => {
   const context = useContext(GenresContext);

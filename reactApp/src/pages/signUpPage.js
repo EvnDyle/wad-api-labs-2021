@@ -17,7 +17,7 @@ const SignUpPage = props => {
   }
 
   if (registered === true) {
-    return <Redirect to="./login" />;
+    return <Redirect to="/login" />;
   }
 
   return (

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const LoginPage = props => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const context = useContext(AuthContext)
+  const context = useContext(AuthContext);
 
   const login = () => {
     context.authenticate(userName, password);

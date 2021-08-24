@@ -17,11 +17,13 @@ import GenresContextProvider from "./contexts/genresContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage'
 import LoginPage from './pages/loginPage'
 import SignUpPage from './pages/signUpPage'
+import AuthProvider from "./contexts/authContext";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <div className="jumbotron">
+      <div className="jumbotron">\
+      <AuthProvider>
         <SiteHeader /> 
         <div className="container-fluid">
           <MoviesContextProvider>
@@ -43,6 +45,7 @@ const App = () => {
             </GenresContextProvider>
           </MoviesContextProvider>
         </div>
+        </AuthProvider>
       </div>
     </BrowserRouter>
   );

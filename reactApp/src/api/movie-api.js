@@ -1,5 +1,5 @@
 export const login = (username, password) => {
-    return fetch('/api/users', {
+    return fetch(`/api/users`, {
         headers: {
             'Content-Type': 'application/json'
         },
@@ -9,7 +9,7 @@ export const login = (username, password) => {
 };
 
 export const signup = (username, password) => {
-    return fetch('/api/users?action=register', {
+    return fetch(`/api/users?action=register`, {
         headers: {
             'Content-Type': 'application/json'
         },
@@ -21,7 +21,7 @@ export const signup = (username, password) => {
 
 export const getMovie = id => {
   return fetch(
-    '/api/movies/'+id,{headers:{
+    `/api/movies/${id}`,{headers:{
       'Authorization':window.localStorage.getItem('token')
     }
   }
@@ -48,9 +48,12 @@ export const getMovies = id => {
     .then(res => res.json());
 };
 
+
 export const getUpcoming = () => {
     return fetch(
-        '/api/upcoming',{headers: {
+        '/api/upcoming',{
+          headers: {
+            'Content-Type': 'application/json',
             'Authorization': window.localStorage.getItem('token')
          }
        }
@@ -59,7 +62,7 @@ export const getUpcoming = () => {
 
 export const getTopRated = () => {
     return fetch(
-        '/api/toprated',{headers: {
+        '/api/topRated',{headers: {
             'Authorization': window.localStorage.getItem('token')
          }
        }
@@ -77,16 +80,27 @@ export const getPopular = () => {
 
   export const getFavourites = (username) => {
     return fetch(
-       '/api/users/${username}/favourites',{headers: {
+       `/api/users/${username}/favourites`,{headers: {
          'Authorization': window.localStorage.getItem('token')
       }
     }
     ).then(res => res.json());
   };
 
+  export const addFavourite = (username, id) => {
+    return fetch(`/api/users/${username}/favourites`, {
+        headers: {
+            'Content-type': 'application/json'
+        },
+        method: 'post',
+        body: JSON.stringify({ id: id })
+    }
+    ).then(res => res.json());
+};
+
   export const getMovieReviews = id => {
     return fetch(
-        '/api/movies/${id}/reviews',{headers: {
+        `/api/movies/${id}/reviews`,{headers: {
             'Authorization': window.localStorage.getItem('token')
          }
        }

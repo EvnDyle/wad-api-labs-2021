@@ -1,7 +1,7 @@
 import express from 'express';
 import User from './userModel';
 import jwt from 'jsonwebtoken';
-import movieModel from '../../api/movies-api/api/movies/movieModel';
+import movieModel from 'src/api/movies-api/api/movies';
 
 const router = express.Router(); // eslint-disable-line
 
@@ -53,19 +53,21 @@ router.post('/', async (req, res, next) => {
     ).catch(next);
   });
 
-//Add a favourite. No Error Handling Yet. Can add duplicates too!
 router.post('/:userName/favourites', async (req, res, next) => {
   const newFavourite = req.body.id;
   const userName = req.params.userName;
-  try{
-    const movie = await movieModel.findByMovieDBId(newFavourite);
-    const user = await User.findByUserName(userName);
+  const movie = await movieModel.findByMovieDBId(newFavourite).catch(next);
+  const user = await User.findByUserName(userName).catch(next);
+
+  if (movie === null) {
+    return res.status(404).json({ code: 404, msg: "Invalid Movie ID" });
+  }
+  if (user === null) {
+    return res.status(404).json({ code: 404, msg: 'Invalid User' });
+  }
     await user.favourites.push(movie._id);
     await user.save(); 
-    res.status(201).json(user); 
-  }catch(err){
-    next(err);
-  }
+    res.status(201).json(user);
 });
 
 // Update a user
